@@ -11,6 +11,14 @@ export interface GimmeDataProps {
     onSetData: (data: Carpool[]) => void;
 }
 
+const ordinals : { [key : number]: string } = {
+    1: "1st",
+    2: "2nd",
+    3: "3rd",
+    4: "4th",
+    5: "5th"
+};
+
 export const GimmeData = ({ onSetData }: GimmeDataProps) => {
     React.useEffect(() => {
         const handler = (event: ClipboardEvent) => {
@@ -38,7 +46,15 @@ export const GimmeData = ({ onSetData }: GimmeDataProps) => {
                 const grouped = new Map<string, string[]>();
 
                 parsed.forEach(([car, first, last, grade, teacher]) => {
-                    grouped.set(car, [ ...(grouped.get(car) ?? []), `${first} ${last} (${grade}, ${teacher})` ])
+                    const gradeth = ordinals[+grade] ?? grade;
+                    const optionals = [teacher, gradeth].filter(i => i !== "");
+
+                    grouped.set(car, [ 
+                        ...(grouped.get(car) ?? []), 
+                        optionals.length 
+                            ? `${first} ${last} (${optionals.join(" ")})`
+                            : `${first} ${last}`
+                    ])
                 });
 
                 const padNumbers = Array.from(grouped.keys())
@@ -65,5 +81,12 @@ export const GimmeData = ({ onSetData }: GimmeDataProps) => {
         }
     }, [ onSetData ]);
 
-    return (<div>Gimme some data</div>);
+    return (<div>
+        <div>&nbsp;</div>
+        <div>Gimme some data</div>
+        <div>&nbsp;</div>
+        <i>Please paste in your five cells wide selection from the spreadsheet
+            of Vehicle, Student First Name, Student Last Name, Grade and Teacher Name.
+        </i>
+    </div>);
 }
