@@ -1,131 +1,160 @@
-html, body, :global(#root) {
-    height: 100%;
-    margin: 0px;
+html,
+body,
+:global(#root) {
+  height: 100%;
+  margin: 0px;
+}
+
+body {
+  background-color: black;
+}
+
+.app {
+  font-family: "Gorga Grotesque", sans-serif;
+  text-align: center;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+
+  height: 100%;
+  max-height: 100%;
+
+  user-select: none;
+
+  > :first-child {
+    flex: 0 0 auto;
+
+    text-align: left;
   }
-  
-  body {
-    background-color: black;
+
+  > :last-child {
+    flex: 1 0 auto;
   }
-  
-  .app {
-    font-family: "Roboto", sans-serif;
-    text-align: center;
-    color: white;
-    height: 100%;
-  
+}
+
+.card {
+  flex: 0 1 auto;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  padding: 6px 10px;
+  cursor: pointer;
+  max-width: 80%;
+
+  .title {
+    font-size: 24px;
+  }
+
+  .info {
+    padding-top: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+@mixin not-ready {
+  h1 {
+    color: rgb(90, 90, 90);
+  }
+
+  >.cardContainer {
+    >* {
+      flex-basis: 33%;
+    }
+  }
+
+  .card {
+    background-color: rgb(51, 51, 51);
+
+    .title {
+      color: rgb(90, 90, 90);
+    }
+
+    .info {
+      display: none;
+    }
+  }
+}
+
+.cardContainer {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  row-gap: 30px;
+
+  max-height: 100%;
+
+  overflow: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  >* {
+    flex: 0 0 33%;
+
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+}
+
+.columns {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: stretch;
+  gap: 10px;
+
+  >* {
+    -outline: 1px dashed red;
+    flex: 0 0 20%;
+
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-  
-    > :first-child {
-      flex: 0 1 auto; 
-     }
-   
-     > :last-child {
-       flex: 1 1 auto; 
-     }
-  
-     user-select: none;
-  }
-  
-  .card {
-    flex: 0 1 auto;
-    border-radius: 10px;
-    background-color: rgb(92, 92, 92);
-    padding: 6px 10px;
-    cursor: pointer;
-  
-    .title {
-      font-size: 24px;
-    }
-  
-    .info {
-      padding-top: 6px;
-      font-size: 12px;
-    }
-  }
-  
-  @mixin not-ready {
-    h1 {
-      color: rgb(90, 90, 90);
-    }
-  
-    > .cardContainer {
-      > * {
-        flex-basis: 33%;
-      }
-    }
-  
-    .card {
-      background-color: rgb(51, 51, 51);
-  
-     .title {
-       color: rgb(90, 90, 90);
-     }
-  
-     .info {
-       display: none;
-     }
-    }
-  }
-  
-  .cardContainer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: space-between;
+    justify-content: flex-start;
+    align-content: flex-start;
     align-items: stretch;
-    row-gap: 30px;
-  
-    > * {
-      flex: 0 0 50%;
-  
-      display: flex;
-      justify-content: center;
-    }
-  }
-  
-  .columns {
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-content: stretch;
-    align-items: stretch;
-    height: 100%;
     gap: 10px;
-  
-    > * {
-      -outline: 1px dashed red;
-      flex: 1 0 40%; 
-  
-      display: flex;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      align-content: flex-start;
-      align-items: stretch;
-      gap: 10px;
-    }
-  
-    > :not(:nth-child(2)) {
-     flex-basis: 20%; 
-  
-     @include not-ready()
-    }
-  
-    > :nth-child(2) {
-      > .cardContainer {
-        > :first-child {
-          flex-basis: 100%;
-  
-          .card {
-           .title {
-             font-size: 60px;
-           }
+  }
+
+  > :nth-child(1) {
+    flex: 0 0 20%;
+
+    @include not-ready()
+  }
+
+  > :nth-child(2) {
+    flex: 0 1 80%;
+
+    >.cardContainer {
+      > :first-child {
+        flex-basis: 100%;
+
+        .card {
+          .title {
+            font-size: 80px;
+          }
+          .info {
+            font-size: 18px;
           }
         }
       }
     }
   }
+}

@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = (env) => ({
     entry: './src/index.tsx',
     mode: env.production ? 'production' : 'development',
+    devtool: "inline-cheap-source-map",
     module: {
          rules: [
             {
@@ -17,7 +18,6 @@ module.exports = (env) => ({
                     loader: "ts-loader",
                     options: {
                         compilerOptions: {
-                            sourceMap: true,
                             noEmit: false
                         }
                     }
