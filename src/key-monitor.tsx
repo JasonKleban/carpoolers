@@ -41,9 +41,11 @@ export const KeyMonitor = ({ searchable, sequence, setSequence, setMatches, onEn
     }, [setSequence]);
 
     const matches = React.useMemo(() => 
-        intersect(sequence.map(token => 
-            pairs.filter(([ phrase, index ]) => phrase.includes(token))
-            .flatMap(([ phrase, index ]) => index))), 
+        intersect(sequence.map(token => {
+            const t = token.toLowerCase();
+            return pairs.filter(([ phrase, index ]) => phrase.includes(t))
+            .flatMap(([ phrase, index ]) => index)
+        })), 
         [ sequence, pairs ]);
 
     React.useEffect(() => {
@@ -71,7 +73,6 @@ export const KeyMonitor = ({ searchable, sequence, setSequence, setMatches, onEn
 
     React.useEffect(() => {
         setMatches(matches);
-        console.log(sequence, matches);
     }, [ matches, setMatches, pairs ]);
 
     return <></>;

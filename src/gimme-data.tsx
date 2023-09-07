@@ -77,7 +77,7 @@ export const GimmeData = ({ onSetData }: GimmeDataProps) => {
                 const loaded = Array.from(grouped.entries()).map(([ identifier, infos ]) => ({
                     identifier,
                     info: infos.map(({ info }) => info).join(", "),
-                    parts: infos.flatMap(({ parts }) => parts)
+                    parts: infos.flatMap(({ parts }) => parts.map(p => p.toLowerCase()))
                 }));
 
                 onSetData(loaded);
