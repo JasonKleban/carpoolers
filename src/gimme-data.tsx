@@ -69,7 +69,7 @@ export const GimmeData = ({ onSetData }: GimmeDataProps) => {
                             info: optionals.length 
                                 ? `${first} ${last} (${optionals.join(" ")})`
                                 : `${first} ${last}`,
-                            parts: [ identifier, first, last, grade, teacher]
+                            parts: [ identifier, first, last, gradeth, teacher]
                         }
                     ])
                 });
