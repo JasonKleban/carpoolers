@@ -5,6 +5,7 @@ import classnames from "classnames";
 export interface Carpool {
     identifier: string;
     info: string;
+    parts: string[];
 }
 
 export interface GimmeDataProps {
@@ -43,21 +44,13 @@ export const GimmeData = ({ onSetData }: GimmeDataProps) => {
                 columns[0] === columns[1] && 
                 columns[0] === 5) {
 
-                const grouped = new Map<string, string[]>();
+                const grouped = new Map<string, { 
+                    parts : string[]
+                    info : string 
+                }[]>();
 
-                parsed.forEach(([car, first, last, grade, teacher]) => {
-                    const gradeth = ordinals[+grade] ?? grade;
-                    const optionals = [teacher, gradeth].filter(i => i !== "");
-
-                    grouped.set(car, [ 
-                        ...(grouped.get(car) ?? []), 
-                        optionals.length 
-                            ? `${first} ${last} (${optionals.join(" ")})`
-                            : `${first} ${last}`
-                    ])
-                });
-
-                const padNumbers = Array.from(grouped.keys())
+                const padNumbers = parsed
+                    .map(([ car ]) => car)
                     .reduce((max, n) => 
                         Math.max(max, 
                             Number.isInteger(+n) 
@@ -65,9 +58,26 @@ export const GimmeData = ({ onSetData }: GimmeDataProps) => {
                             : 0),
                         0);
 
-                const loaded = Array.from(grouped.entries()).map(([ car, infos ]) => ({
-                    identifier: Number.isInteger(+car) ? `${+car}`.padStart(padNumbers, '0') : car,
-                    info: infos.join(", ")
+                parsed.forEach(([car, first, last, grade, teacher]) => {
+                    const identifier = Number.isInteger(+car) ? `${+car}`.padStart(padNumbers, '0') : car;
+                    const gradeth = ordinals[+grade] ?? grade;
+                    const optionals = [teacher, gradeth].filter(i => i !== "");
+
+                    grouped.set(identifier, [ 
+                        ...(grouped.get(identifier) ?? []), 
+                        {
+                            info: optionals.length 
+                                ? `${first} ${last} (${optionals.join(" ")})`
+                                : `${first} ${last}`,
+                            parts: [ identifier, first, last, grade, teacher]
+                        }
+                    ])
+                });
+
+                const loaded = Array.from(grouped.entries()).map(([ identifier, infos ]) => ({
+                    identifier,
+                    info: infos.map(({ info }) => info).join(", "),
+                    parts: infos.flatMap(({ parts }) => parts)
                 }));
 
                 onSetData(loaded);

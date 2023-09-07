@@ -24,12 +24,24 @@ body {
 
   user-select: none;
 
+  position: relative;
+
   > :first-child {
     text-align: right;
     position: absolute;
     top: 0;
     right: 0;
     padding: 6px 10px;
+  }
+
+  .filter {
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 6px 10px;
+    color: grey;
+    background-color: black;
   }
 
   > :last-child {
@@ -117,6 +129,10 @@ body {
     justify-content: center;
     overflow: hidden;
   }
+}
+
+.highlight {
+  background-color: yellow;
 }
 
 .columns {

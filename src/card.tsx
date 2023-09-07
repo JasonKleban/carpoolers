@@ -6,12 +6,13 @@ interface CardProps {
     onClick?: React.MouseEventHandler<HTMLDivElement>
     identifier: string
     info: string
+    highlight?: boolean
 }
 
-export const Card = ({ onClick, identifier, info }: CardProps) =>
+export const Card = ({ onClick, identifier, info, highlight }: CardProps) =>
     <div>
         <div
-            className={classnames(styles.card)}
+            className={classnames(styles.card, { [styles.highlight]: highlight })}
             onClick={onClick}
             title={`${identifier} :: ${info}`}
         >
