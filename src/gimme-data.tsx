@@ -28,8 +28,9 @@ export const GimmeData = ({ onSetData }: GimmeDataProps) => {
             const textData = event.clipboardData?.getData("text/plain");
 
             const parsed = textData?.split('\n')
+                .filter(line => line.trim() !== '')
                 .map(line => line.split('\t')
-                    .map(cell => cell.trim()));
+                .map(cell => cell.trim()));
 
             const rows = parsed?.length ?? 0;
 
