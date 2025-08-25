@@ -1,7 +1,7 @@
 
 # Mrs. Hillis' Carpoolers
 
-A school carpool pickup announcement display helper application.
+A school carpool pickup announcement display helper application.  Live at [jasonkleban.github.io/carpoolers](https://jasonkleban.github.io/carpoolers/)
 
 # Build from this source
 
