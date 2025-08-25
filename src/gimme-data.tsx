@@ -92,12 +92,13 @@ export const GimmeData = ({ onSetData }: GimmeDataProps) => {
         }
     }, [ onSetData ]);
 
-    return (<div>
+    return (<div className={classnames(styles.gimmedata)}>
         <div>&nbsp;</div>
-        <div>Gimme some data</div>
+        <div><b>Gimme data</b></div>
         <div>&nbsp;</div>
-        <i>Please paste in your five cells wide selection from the spreadsheet
+        <i className={classnames(styles.instructions)}>Please paste in your five cells wide selection from the spreadsheet
             of Vehicle, Student First Name, Student Last Name, Grade and Teacher Name.
         </i>
+        <i className={classnames(styles.instructions)}>Your pasted data stays on your computer and is forgotten if you close or refresh this tab.</i>
     </div>);
 }

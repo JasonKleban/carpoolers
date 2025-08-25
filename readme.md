@@ -8,7 +8,7 @@ A school carpool pickup announcement display helper application.
 1. `git clone` this repo locally, and from the project folder in the command line:
 2. `npm install` to install the various dependencies
 3. `npm run build` to build to the `./dist` folder
-4. Open the resulting `carpool.html` from the dist folder with your browser to see 
+4. Open the resulting `index.html` from the dist folder with your browser to see 
 
 ![Expected initial state of the application](./documentation-readme-images/initial-state.png)
 

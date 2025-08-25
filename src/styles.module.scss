@@ -9,6 +9,24 @@ body {
   background-color: black;
 }
 
+.link {
+  color: unset;
+  text-decoration: none;
+}
+
+.gimmedata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.instructions {
+  margin-top: 2em;
+  display: block;
+  max-width: 400px;
+}
+
 .app {
   font-family: "Gorga Grotesque", sans-serif;
   text-align: center;

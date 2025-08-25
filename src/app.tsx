@@ -94,7 +94,7 @@ export const App = () => {
 
   return (
     <div className={classnames(styles.app)}>
-      <h3>Mrs. Hillis' Carpoolers</h3>
+      <h3>Mrs. Hillis' Carpoolers <a className={classnames(styles.link)} href="https://github.com/JasonKleban/carpoolers" target="_blank">(source)</a></h3>
       <div className={styles.filter}>{showSequence}</div>
       {
         !all.length
