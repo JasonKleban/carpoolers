@@ -37,7 +37,7 @@ module.exports = (env) => ({
      },
      plugins: [
         new HtmlWebpackPlugin({
-            filename: "carpool.html",
+            filename: "index.html",
             inject: 'body',
             'meta': {
               'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
