@@ -6,7 +6,7 @@ import { Carpool, GimmeData } from "./gimme-data";
 import { KeyMonitor } from "./key-monitor";
 
 export const App = () => {
-  const [ sequence, setSequence ] = React.useState<string[]>([]);
+  const [sequence, setSequence] = React.useState<string[]>([]);
   const [all, setAll] = React.useState<Carpool[]>([]);
   const [pendings, setPendings] = React.useState<number[]>([]);
   const [readys, setReadys] = React.useState<number[]>([]);
@@ -94,7 +94,7 @@ export const App = () => {
 
   return (
     <div className={classnames(styles.app)}>
-      <h3>Mrs. Hillis' Carpoolers <a className={classnames(styles.link)} href="https://github.com/JasonKleban/carpoolers" target="_blank">(source)</a></h3>
+      <h3>Mrs. Hillis' Carpoolers</h3>
       <div className={styles.filter}>{showSequence}</div>
       {
         !all.length
