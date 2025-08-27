@@ -44,7 +44,7 @@ module.exports = (env) => ({
             },
             templateContent: `
               <html>
-                <head><title>Mrs. Hillis' Carpoolers</title></head>
+                <head><title>TGES Carpoolers</title></head>
                 <body>
                     <div id="root" />
                 </body>
