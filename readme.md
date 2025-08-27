@@ -20,4 +20,4 @@ A school carpool pickup announcement display helper application.  Live at [jason
 
 6. Type any terms from the data separated by spaces to filter the pending list.  Press [escape] key to clear.  Narrow to exactly one match so that you can hit [enter] to highlight that data, even if that item has already been found previously.  Or use the mouse to toggle between Pending and Ready states.
 
-Note: This web app intentionally does NOT remember your data between refreshes/closing your browser and does not upload your data anywhere.  All processing is done locally and there are no remote servers or logins involved.
+Note: This web app does not upload your data anywhere.  All processing is done locally and there are no remote servers or logins involved.
