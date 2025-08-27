@@ -143,7 +143,7 @@ export const GimmeData = ({ onSetData }: GimmeDataProps) => {
         </i>
         <i className={classnames(styles.instructions)}>Note: Your pasted data is not uploaded/shared anywhere by this application.</i>
         <a className={classnames(styles.instructions, styles.link)} href="https://github.com/JasonKleban/carpoolers" target="_blank">
-          You can view this open source app's code is github.com.
+          View this open source app's code on github.com.
         </a>
     </div>);
 }
